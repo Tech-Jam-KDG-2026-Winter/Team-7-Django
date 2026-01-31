@@ -11,6 +11,7 @@ class User(models.Model):
     name = models.CharField(max_length=100)
     height = models.FloatField()
     weight = models.FloatField()
+    gender = models.CharField(max_length=20)
     gender = models.CharField(max_length=20, choices=GENDER_CHOICES)
     birth_date = models.DateField()
     password = models.CharField(max_length=128)

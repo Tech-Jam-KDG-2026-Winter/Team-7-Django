@@ -22,5 +22,4 @@ urlpatterns = [
     # path('', include("tasks.urls")),
     # path('calendar/', include("calendar_app.urls")),
     # path('questions/', include("questions.urls")),
-    path('accounts/', include("accounts.urls")),
 ]

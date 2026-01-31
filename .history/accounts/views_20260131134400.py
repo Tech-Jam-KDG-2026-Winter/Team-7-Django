@@ -31,11 +31,10 @@ def login_view(request):
         
         try:
             user = User.objects.get(name=name)
-
+            # ハッシュ化されたパスワードを検証
             if check_password(password, user.password):
                 request.session['user_id'] = user.id
-                return redirect('index') ################# リダイアレクト先（仮） ##################
-
+                return redirect('index') # ログイン後のリダイレクト先（適宜変更してください）
             else:
                 error = "パスワードが一致しません。"
         except User.DoesNotExist:

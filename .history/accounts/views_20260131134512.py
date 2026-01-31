@@ -34,7 +34,12 @@ def login_view(request):
 
             if check_password(password, user.password):
                 request.session['user_id'] = user.id
-                return redirect('index') ################# リダイアレクト先（仮） ##################
+                return redirect('index') 
+            
+
+            ################# リダイアレクト先（仮） ##################
+
+
 
             else:
                 error = "パスワードが一致しません。"
