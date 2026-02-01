@@ -1,3 +1,27 @@
 from django.db import models
+from tasks.models import Category
+class Question(models.Model):
+    
+    PRIORITY_CHOICES = [
+        ('HIGH', 'High'),
+        ('LOW', 'Low'),
+    ]
 
-# Create your models here.
+    id = models.AutoField(primary_key=True)
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.CASCADE,
+        related_name='questions'
+    )
+    content = models.TextField()
+    priority = models.CharField(max_length=4, choices=PRIORITY_CHOICES)
+    is_yes = models.BooleanField(default=False)
+
+    class Meta:
+        db_table = 'questions'
+        verbose_name = 'Question'
+        verbose_name_plural = 'Questions'
+        ordering = ['-priority', 'id']
+
+    def __str__(self):
+        return f"{self.category.title} - {self.content[:50]}"
