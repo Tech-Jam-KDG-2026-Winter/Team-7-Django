@@ -1,3 +1,6 @@
+#########リダイアレクト先の設定##########
+
+
 from django.shortcuts import render, redirect
 from django.contrib.auth.hashers import make_password, check_password
 from .models import User
@@ -12,7 +15,11 @@ def signup(request):
         gender = request.POST.get('gender')
         birth_date = request.POST.get('birth_date')
 
+        if User.objects.filter(name=name).exists():
+            return render(request, 'accounts/signup.html', {'error': 'この名前は既に使用されています。'})
+
         User.objects.create(
+            username=name,
             name=name,
             password=make_password(password),
             height=height,
