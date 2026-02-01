@@ -3,11 +3,15 @@
 
 from django.shortcuts import render, redirect
 from django.contrib.auth.hashers import make_password, check_password
+from django.views import View
 from .models import User
 
 # Create your views here.
-def signup(request):
-    if request.method == 'POST':
+class SignupView(View):
+    def get(self, request):
+        return render(request, 'accounts/signup.html')
+
+    def post(self, request):
         name = request.POST.get('name')
         password = request.POST.get('password')
         height = request.POST.get('height')
@@ -29,10 +33,11 @@ def signup(request):
         )
         return redirect('login')
 
-    return render(request, 'accounts/signup.html')
+class LoginView(View):
+    def get(self, request):
+        return render(request, 'accounts/login.html')
 
-def login_view(request):
-    if request.method == 'POST':
+    def post(self, request):
         name = request.POST.get('name')
         password = request.POST.get('password')
         
@@ -50,8 +55,7 @@ def login_view(request):
             
         return render(request, 'accounts/login.html', {'error': error})
 
-    return render(request, 'accounts/login.html')
-
-def logout_view(request):
-    request.session.flush()
-    return redirect('login')
+class LogoutView(View):
+    def get(self, request):
+        request.session.flush()
+        return redirect('login')
