@@ -1,0 +1,7 @@
+<div class="tab-bar">
+    <a href="{% url 'home' %}" class="tab-item {% if active_tab == 'home' %}active{% endif %}">アイコン(ホーム)</a>
+    <a href="#" class="tab-item">アイコン(カレンダーぽいやつ)</a>
+    <a href="#" class="tab-item">アイコン(プラスボタン)</a>
+    <a href="{% url 'calendar' %}" class="tab-item {% if active_tab == 'calendar' %}active{% endif %}">アイコン(時計)</a>
+    <a href="{% url 'user' %}" class="tab-item {% if active_tab == 'user' %}active{% endif %}">アイコン(人)</a>
+</div>

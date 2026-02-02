@@ -1,0 +1,15 @@
+<div class="mobile-container">
+    <div class="">
+        <p class="">その日の消費カロリー表示</p>
+        <h1 class="">11</h1>
+        <p class="">Feb <br> Mon</p>
+    </div>
+
+    <div class="calendar-grid">
+        <div class="circle black"></div><div class="circle black"></div><div class="circle black"></div><div class="circle black"></div><div class="circle black"></div>
+        <div class="circle black"></div><div class="circle active"></div><div class="circle black"></div><div class="circle black"></div><div class="circle black"></div>
+        {% for i in "1234567890" %}<div class="circle"></div>{% endfor %}
+    </div>
+
+    {% include "includes/navbar.html" with active_tab='calendar' %}
+</div>

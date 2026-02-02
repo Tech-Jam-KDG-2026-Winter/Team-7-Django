@@ -1,0 +1,14 @@
+<div class="mobile-container">
+    <div></div>
+    <h2>登録内容確認</h2>
+    <p class="description-text">下記のメールアドレスでアカウント作成しても</p>
+
+    <div>
+        <div class="field-group">
+            <span class="label">メールアドレス</span>
+            <input type="email" value="{{ request.POST.email }}" readonly>
+        </div>
+        <button class="btn-danger">送信</button>
+    </div>
+    <p class="info-text">送信後、自動でログイン画面に遷移いたします</p>
+</div>

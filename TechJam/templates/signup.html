@@ -1,0 +1,28 @@
+<div class="mobile-container">
+    <div class="header">
+        <a href="/" class="back-btn">←</a>
+        <div class="header-title">新規登録</div>
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="field-group">
+            <span class="label">メールアドレス</span>
+            <input type="email" name="username">
+        </div>
+        <div class="field-group">
+            <span class="label">パスワード</span>
+            <input type="password" name="password">
+        </div>
+        <button type="submit" class="btn-primary">新規登録</button>
+    </form>
+
+    <div class="divider">
+        <div class="line"></div>
+        <div class="divider-text">または</div>
+        <div class="line"></div>
+    </div>
+
+    <button class="btn-outline">Googleで続ける</button>
+    <button class="btn-outline">Facebookで続ける</button>
+</div>

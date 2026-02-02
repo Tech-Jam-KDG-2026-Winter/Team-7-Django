@@ -1,0 +1,36 @@
+<div class="mobile-container">
+    <div class="header">
+        <a href="/" class="back-btn">←</a>
+        <div class="header-title">ログイン</div>
+    </div>
+
+    <p>
+        Don't have an account? <a href="{% url 'signup' %}">Sign Up</a>
+    </p>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="field-group">
+            <span class="label">メールアドレス</span>
+            {{ form.username }}
+        </div>
+        <div class="field-group">
+            <span class="label">パスワード</span>
+            {{ form.password }}
+        </div>
+        <button type="submit" class="btn-primary">ログイン</button>
+    </form>
+
+    <p>
+        <a href="#">Forgot Your Password ?</a>
+    </p>
+
+    <div class="divider">
+        <div class="line"></div>
+        <div class="divider-text">または</div>
+        <div class="line"></div>
+    </div>
+
+    <button class="btn-outline">Googleで続ける</button>
+    <button class="btn-outline">Facebookで続ける</button>
+</div>

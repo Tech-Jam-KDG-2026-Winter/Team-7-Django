@@ -1,0 +1,16 @@
+<div class="mobile-container">
+    <div></div>
+    <h2>新規登録完了</h2>
+    <p class="description-text">下記のメールアドレスでアカウントを登録いたしました</p>
+
+    <div>
+        <div class="field-group">
+            <span class="label">メールアドレス</span>
+            <input type="email" value="{{ user.email }}" readonly>
+        </div>
+        <a href="{% url 'login' %}">
+            <button class="btn-danger">送信</button>
+        </a>
+    </div>
+    <p class="info-text">送信後、自動でログイン画面に遷移いたします</p>
+</div>
