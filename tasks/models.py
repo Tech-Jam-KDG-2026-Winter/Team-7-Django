@@ -47,7 +47,7 @@ class Task(models.Model):
         ordering = ['-id']
 
     def __str__(self):
-        return f"{self.user.name} - {self.content[:50]}"
+        return f"{self.user.username} - {self.content[:50]}"
 
 
 class TaskDailyAchieved(models.Model):
@@ -74,4 +74,4 @@ class TaskDailyAchieved(models.Model):
         unique_together = [['user', 'task', 'created_at']]
 
     def __str__(self):
-        return f"{self.user.name} - {self.task.content[:30]} - {self.created_at}"
+        return f"{self.user.username} - {self.task.content[:30]} - {self.created_at}"

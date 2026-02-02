@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>質問一覧</title>
+</head>
+<body>
+    <h1>質問一覧</h1>
+    <a href="{% url 'index' %}">タスク一覧へ戻る</a>
+    
+    <ul>
+        {% for question in questions %}
+            <li>
+                <p><strong>{{ question.content }}</strong> (カテゴリー: {{ question.category.title }})</p>
+                <form action="{% url 'answer_question' question.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" name="answer" value="yes">Yes</button>
+                    <button type="submit" name="answer" value="no">No</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

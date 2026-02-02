@@ -1,0 +1,41 @@
+<!--！！！！！！！！！！！！ モックアップ！！！！！！！！！！！！！！！ -->
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>タスク一覧</title>
+</head>
+<body>
+    <h1>タスク一覧</h1>
+    <p>ようこそ、{{ user.username }}さん</p>
+
+    {% if tasks %}
+        <ul>
+            {% for task in tasks %}
+                <li>
+                    <strong>{{ task.content }}</strong>
+                    <br>
+                    カテゴリー: {{ task.category.title }} | 
+                    フェーズ: {{ task.phase }} | 
+                    カロリー: {{ task.calorie }}
+                    {% if task.is_achieved %}
+                        (達成済み)
+                    {% else %}
+                        <form action="{% url 'complete_task' task.id %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit">達成</button>
+                        </form>
+                        (未達成)
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>タスクはまだ登録されていません。</p>
+    {% endif %}
+
+    <a href="{% url 'logout' %}">ログアウト</a>
+</body>
+</html>
