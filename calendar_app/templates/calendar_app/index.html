@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>カレンダー</title>
+    <style>
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: center; vertical-align: top; height: 80px; width: 14%; }
+        th { background-color: #f2f2f2; height: auto; }
+        .other-month { color: #ccc; background-color: #f9f9f9; }
+        .calorie-info { color: #28a745; font-weight: bold; font-size: 0.9em; margin-top: 5px; }
+        .header-nav { display: flex; justify-content: space-between; align-items: center; }
+    </style>
+</head>
+<body>
+    <div class="header-nav">
+        <h1>{{ year }}年 {{ month }}月</h1>
+        <div>
+            <a href="{% url 'index' %}">タスク一覧へ戻る</a>
+        </div>
+    </div>
+
+    <div>
+        <a href="?year={{ prev_year }}&month={{ prev_month }}">&lt; 前月</a> | 
+        <a href="?year={{ next_year }}&month={{ next_month }}">次月 &gt;</a>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for week in calendar_data %}
+            <tr>
+                {% for day in week %}
+                <td class="{% if not day.is_current_month %}other-month{% endif %}">
+                    <div>{{ day.day }}</div>
+                    {% if day.calories > 0 %}
+                        <div class="calorie-info">-{{ day.calories }}kcal</div>
+                    {% endif %}
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
