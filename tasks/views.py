@@ -36,7 +36,7 @@ class TaskUpdateView(View):
         task.is_achieved = True
         task.save()
 
-        today = timezone.now().date()#重複拒否
+        today = timezone.now().date()
         if not TaskDailyAchieved.objects.filter(user=user, task=task, created_at=today).exists():
             TaskDailyAchieved.objects.create(user=user, task=task)
             
