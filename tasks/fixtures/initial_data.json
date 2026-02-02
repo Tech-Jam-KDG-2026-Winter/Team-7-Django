@@ -1,0 +1,62 @@
+[
+  { "model": "tasks.category", "pk": 1, "fields": { "title": "筋トレ" } },
+  { "model": "tasks.category", "pk": 2, "fields": { "title": "スタミナ" } },
+  { "model": "tasks.category", "pk": 3, "fields": { "title": "ヘルスケア" } },
+
+
+  
+  { "model": "tasks.task", "pk": 1, "fields": { "user": 1, "category": 1, "phase": "Large", "content": "3ヶ月でベンチプレスを10kg更新し、筋肉量を2kg増やす", "calorie": 0, "is_achieved": false } },
+  
+  { "model": "tasks.task", "pk": 2, "fields": { "user": 1, "category": 1, "phase": "Medium", "content": "筋肥大を最大化するトレーニング習慣の確立", "calorie": 0, "is_achieved": false } },
+  { "model": "tasks.task", "pk": 3, "fields": { "user": 1, "category": 1, "phase": "Small", "content": "週3回ジムでBIG3中心のメニューを行う", "calorie": 300, "is_achieved": false } },
+  { "model": "tasks.task", "pk": 4, "fields": { "user": 1, "category": 1, "phase": "Small", "content": "毎セット限界まで追い込み、記録をノートに取る", "calorie": 50, "is_achieved": false } },
+  { "model": "tasks.task", "pk": 5, "fields": { "user": 1, "category": 1, "phase": "Small", "content": "正しいフォームを動画で週1回セルフチェックする", "calorie": 0, "is_achieved": false } },
+
+  { "model": "tasks.task", "pk": 6, "fields": { "user": 1, "category": 1, "phase": "Medium", "content": "高タンパク・高カロリーな食事管理の徹底", "calorie": 0, "is_achieved": false } },
+  { "model": "tasks.task", "pk": 7, "fields": { "user": 1, "category": 1, "phase": "Small", "content": "体重×2gのタンパク質を毎日摂取する", "calorie": 0, "is_achieved": false } },
+  { "model": "tasks.task", "pk": 8, "fields": { "user": 1, "category": 1, "phase": "Small", "content": "毎食後にマルチビタミンを摂取する", "calorie": 0, "is_achieved": false } },
+  { "model": "tasks.task", "pk": 9, "fields": { "user": 1, "category": 1, "phase": "Small", "content": "トレーニング直後にプロテインと糖質を補給する", "calorie": 0, "is_achieved": false } },
+
+  { "model": "tasks.task", "pk": 10, "fields": { "user": 1, "category": 1, "phase": "Medium", "content": "筋肉を成長させるための休養・リカバリー", "calorie": 0, "is_achieved": false } },
+  { "model": "tasks.task", "pk": 11, "fields": { "user": 1, "category": 1, "phase": "Small", "content": "毎日7時間以上の睡眠を死守する", "calorie": 0, "is_achieved": false } },
+  { "model": "tasks.task", "pk": 12, "fields": { "user": 1, "category": 1, "phase": "Small", "content": "同じ部位のトレは48時間以上空ける", "calorie": 0, "is_achieved": false } },
+  { "model": "tasks.task", "pk": 13, "fields": { "user": 1, "category": 1, "phase": "Small", "content": "寝る1時間前の入浴とストレッチを行う", "calorie": 20, "is_achieved": false } },
+
+
+
+  { "model": "tasks.task", "pk": 14, "fields": { "user": 1, "category": 2, "phase": "Large", "content": "5km走を25分以内で完走できる心肺機能を身につける", "calorie": 0, "is_achieved": false } },
+  
+  { "model": "tasks.task", "pk": 15, "fields": { "user": 1, "category": 2, "phase": "Medium", "content": "段階的なランニング強度の向上", "calorie": 0, "is_achieved": false } },
+  { "model": "tasks.task", "pk": 16, "fields": { "user": 1, "category": 2, "phase": "Small", "content": "週2回のスロージョギング(30分)", "calorie": 250, "is_achieved": false } },
+  { "model": "tasks.task", "pk": 17, "fields": { "user": 1, "category": 2, "phase": "Small", "content": "週末に1回、坂道ダッシュを5本行う", "calorie": 150, "is_achieved": false } },
+  { "model": "tasks.task", "pk": 18, "fields": { "user": 1, "category": 2, "phase": "Small", "content": "月間走行距離80kmを達成する", "calorie": 100, "is_achieved": false } },
+
+  { "model": "tasks.task", "pk": 19, "fields": { "user": 1, "category": 2, "phase": "Medium", "content": "持久力向上のための体幹・下半身強化", "calorie": 0, "is_achieved": false } },
+  { "model": "tasks.task", "pk": 20, "fields": { "user": 1, "category": 2, "phase": "Small", "content": "毎日3分間のプランクを実施", "calorie": 15, "is_achieved": false } },
+  { "model": "tasks.task", "pk": 21, "fields": { "user": 1, "category": 2, "phase": "Small", "content": "ランニング後のカーフレイズ(50回)", "calorie": 30, "is_achieved": false } },
+  { "model": "tasks.task", "pk": 22, "fields": { "user": 1, "category": 2, "phase": "Small", "content": "片足立ちで歯磨きを行い、バランス感覚を養う", "calorie": 5, "is_achieved": false } },
+
+  { "model": "tasks.task", "pk": 23, "fields": { "user": 1, "category": 2, "phase": "Medium", "content": "運動効率を高めるコンディショニング", "calorie": 0, "is_achieved": false } },
+  { "model": "tasks.task", "pk": 24, "fields": { "user": 1, "category": 2, "phase": "Small", "content": "運動前に10分間の動的ストレッチを行う", "calorie": 20, "is_achieved": false } },
+  { "model": "tasks.task", "pk": 25, "fields": { "user": 1, "category": 2, "phase": "Small", "content": "体重の変化を毎朝記録する", "calorie": 0, "is_achieved": false } },
+  { "model": "tasks.task", "pk": 26, "fields": { "user": 1, "category": 2, "phase": "Small", "content": "適切なランニングシューズのメンテナンスを行う", "calorie": 0, "is_achieved": false } },
+
+
+
+  { "model": "tasks.task", "pk": 27, "fields": { "user": 1, "category": 3, "phase": "Large", "content": "血液検査数値を正常に保ち、疲れにくい体を作る", "calorie": 0, "is_achieved": false } },
+
+  { "model": "tasks.task", "pk": 28, "fields": { "user": 1, "category": 3, "phase": "Medium", "content": "体内環境を整える水分・栄養補給", "calorie": 0, "is_achieved": false } },
+  { "model": "tasks.task", "pk": 29, "fields": { "user": 1, "category": 3, "phase": "Small", "content": "1日2リットルの常温水を飲む", "calorie": 0, "is_achieved": false } },
+  { "model": "tasks.task", "pk": 30, "fields": { "user": 1, "category": 3, "phase": "Small", "content": "糖質の多い飲み物を控える", "calorie": 0, "is_achieved": false } },
+  { "model": "tasks.task", "pk": 31, "fields": { "user": 1, "category": 3, "phase": "Small", "content": "毎朝コップ一杯の白湯を飲む", "calorie": 0, "is_achieved": false } },
+
+  { "model": "tasks.task", "pk": 32, "fields": { "user": 1, "category": 3, "phase": "Medium", "content": "自律神経の安定とストレスケア", "calorie": 0, "is_achieved": false } },
+  { "model": "tasks.task", "pk": 33, "fields": { "user": 1, "category": 3, "phase": "Small", "content": "寝る1時間前からスマホ・PCを触らない", "calorie": 0, "is_achieved": false } },
+  { "model": "tasks.task", "pk": 34, "fields": { "user": 1, "category": 3, "phase": "Small", "content": "朝、太陽の光を5分間浴びる", "calorie": 0, "is_achieved": false } },
+  { "model": "tasks.task", "pk": 35, "fields": { "user": 1, "category": 3, "phase": "Small", "content": "湯船に15分間浸かる(40度程度)", "calorie": 40, "is_achieved": false } },
+
+  { "model": "tasks.task", "pk": 36, "fields": { "user": 1, "category": 3, "phase": "Medium", "content": "生活習慣病を予防する活動習慣", "calorie": 0, "is_achieved": false } },
+  { "model": "tasks.task", "pk": 37, "fields": { "user": 1, "category": 3, "phase": "Small", "content": "1日平均8,000歩以上歩く", "calorie": 240, "is_achieved": false } },
+  { "model": "tasks.task", "pk": 38, "fields": { "user": 1, "category": 3, "phase": "Small", "content": "エスカレーターではなく階段を使う", "calorie": 10, "is_achieved": false } },
+  { "model": "tasks.task", "pk": 39, "fields": { "user": 1, "category": 3, "phase": "Small", "content": "デスクワーク中に1時間に一度立ち上がりストレッチする", "calorie": 5, "is_achieved": false } }
+]

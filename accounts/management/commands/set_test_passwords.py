@@ -20,7 +20,7 @@ class Command(BaseCommand):
                 user.password = make_password(password)
                 user.save()
                 self.stdout.write(
-                    self.style.SUCCESS(f'{user.name} ({email}) のパスワードを設定しました')
+                    self.style.SUCCESS(f'({email}) のパスワードを設定しました')
                 )
             except User.DoesNotExist:
                 self.stdout.write(

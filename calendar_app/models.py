@@ -24,7 +24,7 @@ class Record(models.Model):
         unique_together = [['user', 'created_at']]
 
     def __str__(self):
-        return f"{self.user.name} - {self.created_at}"
+        return f"{self.user.username} - {self.created_at}"
 
     # <p>正味カロリー: {{ record.net_calorie }}</p>
     # こんな感じで呼び出せる！
