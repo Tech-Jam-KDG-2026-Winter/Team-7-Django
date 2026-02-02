@@ -12,37 +12,37 @@ class SignupView(View):
         return render(request, 'accounts/signup.html')
 
     def post(self, request):
-        name = request.POST.get('name')
+        # name = request.POST.get('name')
         password = request.POST.get('password')
-        height = request.POST.get('height')
-        weight = request.POST.get('weight')
-        gender = request.POST.get('gender')
-        birth_date = request.POST.get('birth_date')
+        email = request.POST.get('email')
+        # height = request.POST.get('height')
+        # weight = request.POST.get('weight')
+        # gender = request.POST.get('gender')
+        # birth_date = request.POST.get('birth_date')
 
-        if User.objects.filter(name=name).exists():
-            return render(request, 'accounts/signup.html', {'error': 'この名前は既に使用されています。'})
+        # if User.objects.filter(name=name).exists():
+        #     return render(request, 'accounts/signup.html', {'error': 'この名前は既に使用されています。'})
 
-        User.objects.create(
-            username=name,
-            name=name,
+        if User.objects.filter(email=email).exists():
+            return render(request, 'accounts/signup.html', {'error': 'このメールアドレスは既に使用されています。'})
+
+        user = User.objects.create(
             password=make_password(password),
-            height=height,
-            weight=weight,
-            gender=gender,
-            birth_date=birth_date
+            email=email,
         )
-        return redirect('login')
+        request.session['user_id'] = user.id
+        return redirect('index')################# リダイアレクト先（仮） ##################
 
 class LoginView(View):
     def get(self, request):
         return render(request, 'accounts/login.html')
 
     def post(self, request):
-        name = request.POST.get('name')
+        email = request.POST.get('email')
         password = request.POST.get('password')
         
         try:
-            user = User.objects.get(name=name)
+            user = User.objects.get(email=email)
 
             if check_password(password, user.password):
                 request.session['user_id'] = user.id
