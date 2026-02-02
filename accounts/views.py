@@ -12,21 +12,16 @@ class SignupView(View):
         return render(request, 'accounts/signup.html')
 
     def post(self, request):
-        # name = request.POST.get('name')
-        password = request.POST.get('password')
         email = request.POST.get('email')
-        # height = request.POST.get('height')
-        # weight = request.POST.get('weight')
-        # gender = request.POST.get('gender')
-        # birth_date = request.POST.get('birth_date')
-
-        # if User.objects.filter(name=name).exists():
-        #     return render(request, 'accounts/signup.html', {'error': 'この名前は既に使用されています。'})
+        password = request.POST.get('password')
+        
+        username = email # 名前（username）は必須のため、emailを一時的に代用
 
         if User.objects.filter(email=email).exists():
             return render(request, 'accounts/signup.html', {'error': 'このメールアドレスは既に使用されています。'})
 
         user = User.objects.create(
+            username=username,
             password=make_password(password),
             email=email,
         )

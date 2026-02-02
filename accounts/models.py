@@ -9,11 +9,11 @@ class User(AbstractUser):
         ('other', '未回答'),
     ]
 
-    name = models.CharField(max_length=100, unique=True)
-    height = models.FloatField()
-    weight = models.FloatField()
-    gender = models.CharField(max_length=20, choices=GENDER_CHOICES)
-    birth_date = models.DateField()
+    email = models.EmailField(unique=True)
+    height = models.FloatField(null=True, blank=True)
+    weight = models.FloatField(null=True, blank=True)
+    gender = models.CharField(max_length=20, choices=GENDER_CHOICES, null=True, blank=True)
+    birth_date = models.DateField(null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return self.username
