@@ -12,7 +12,7 @@ class QuestionBatchView(View):
           return redirect('login')
 
         questions = Question.objects.all()
-        return render(request, 'questions/index.html', {'questions': questions})
+        return render(request, 'questions.html', {'questions': questions})
 
     def post(self, request, pk): # 質問回答・保存
         user_id = request.session.get('user_id')
@@ -40,7 +40,8 @@ class QuestionBatchView(View):
 
         return redirect('questions_index')
 
-    def create_recommended_task(self, user):# カテゴリごとに集計→リコメンド
+    @staticmethod
+    def create_recommended_task(user):# カテゴリごとに集計→リコメンド
         categories = Category.objects.all()
         best_category = None
         max_yes_count = -1
@@ -57,10 +58,12 @@ class QuestionBatchView(View):
                 best_category = category
         
         if best_category:
-            Task.objects.create(
+            task, created = Task.objects.get_or_create(
                 user=user,
                 category=best_category,
                 phase='Medium',
                 content=f'{best_category.title} に基づくおすすめタスク',
-                calorie=0.0
+                defaults={'calorie': 0.0}
             )
+            return task
+        return None

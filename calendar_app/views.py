@@ -70,4 +70,4 @@ class CalendarView(View):
             'next_month': next_month,
         }
 
-        return render(request, 'calendar_app/index.html', context)
+        return render(request, 'calendar.html', context)

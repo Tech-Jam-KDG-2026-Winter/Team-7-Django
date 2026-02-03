@@ -1,0 +1,170 @@
+
+  /* ベースのリセットとフォント設定 */
+  * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+  }
+
+  body {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+  }
+
+  /* スマホ画面のシミュレーション枠 */
+  .phone-container {
+      width: 375px;
+      height: 812px; /* iPhone X/11/12/13 size */
+      background-color: white;
+      border-radius: 40px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 30px; /* 下部の余白 */
+  }
+
+  /* --- メインコンテンツ --- */
+  .content {
+      flex: 1;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden; /* コンテンツ全体はスクロールさせない */
+  }
+
+  /* タイトル */
+  .page-title {
+      text-align: left;
+      padding-left: 20px;
+      font-size: 20px;
+      margin-top: 140px;
+      margin-bottom: 77px;
+      color: #111;
+      font-weight: 400;
+  }
+
+  /* 日付表示エリア (11 Feb Mon) */
+  .date-display {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding-left: 10px;
+      gap: 15px;
+      margin-bottom: 40px;
+  }
+
+  .date-number {
+      font-size: 96px;
+      font-weight: 400;
+      line-height: 1;
+      margin-left: 20px;
+      color: #000;
+  }
+
+  .date-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-size: 20px;
+      line-height: 1.4;
+      margin-left: 20px;
+  }
+
+  /* --- スクロール可能なカレンダー領域 --- */
+  .calendar-scroll-area {
+      flex: 1;
+      overflow-x: auto; /* 横スクロールに変更 */
+      overflow-y: hidden;
+      display: flex; /* 横並びにする */
+      scroll-snap-type: x mandatory; /* スクロールを月ごとにスナップさせる */
+      /* スクロールバーを隠す（オプション） */
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE/Edge */
+      cursor: grab; /* マウスカーソルを掴む形に */
+  }
+  .calendar-scroll-area::-webkit-scrollbar {
+      display: none; /* Chrome/Safari */
+  }
+
+  /* 月ごとのコンテナ（1ヶ月分を1画面幅にする） */
+  .month-container {
+      min-width: 100%;
+      scroll-snap-align: start;
+      padding-bottom: 20px;
+  }
+
+  /* ドラッグ中のカーソル */
+  .calendar-scroll-area.active {
+      cursor: grabbing;
+      scroll-snap-type: none; /* ドラッグ中はスナップを無効化 */
+  }
+
+  /* 月のラベル */
+  .month-label {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 10px 0 15px 10px;
+      color: #333;
+  }
+
+  /* --- カレンダーグリッド --- */
+  .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr); /* 7列 */
+      gap: 12px; /* マスの間隔 */
+      padding: 0 10px;
+  }
+
+  .grid-item {
+      aspect-ratio: 1 / 1; /* 正方形を維持 */
+      border-radius: 4px;
+      background-color: #e0e0e0; /* デフォルトのグレー */
+  }
+
+  /* 色のクラス定義 */
+  .color-gray { background-color: #dcdcdc; }
+  .color-purple { background-color: #aa00ff; }
+  .color-red { background-color: #ff0000; }
+  .color-orange { background-color: #ff6600; }
+  .color-blue { background-color: #0033ff; }
+
+  /* --- モーダル --- */
+  .modal {
+      display: none; 
+      position: absolute; 
+      z-index: 100; 
+      left: 0;
+      top: 0;
+      width: 100%; 
+      height: 100%; 
+      background-color: rgba(0,0,0,0.5); /* 半透明の黒背景 */
+  }
+
+  .modal-content {
+      background-color: #fefefe;
+      margin: 60% auto; /* 上から位置調整 */
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      border-radius: 12px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+
+  .close-button {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      position: absolute;
+      right: 15px;
+      top: 5px;
+      cursor: pointer;
+  }

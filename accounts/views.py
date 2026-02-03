@@ -9,16 +9,16 @@ from .models import User
 # Create your views here.
 class SignupView(View):
     def get(self, request):
-        return render(request, 'accounts/signup.html')
+        return render(request, 'signup.html')
 
     def post(self, request):
         email = request.POST.get('email')
         password = request.POST.get('password')
         
-        username = email # 名前（username）は必須のため、emailを一時的に代用
+        username = email
 
         if User.objects.filter(email=email).exists():
-            return render(request, 'accounts/signup.html', {'error': 'このメールアドレスは既に使用されています。'})
+            return render(request, 'signup.html', {'error': 'このメールアドレスは既に使用されています。'})
 
         user = User.objects.create(
             username=username,
@@ -30,7 +30,7 @@ class SignupView(View):
 
 class LoginView(View):
     def get(self, request):
-        return render(request, 'accounts/login.html')
+        return render(request, 'login.html')
 
     def post(self, request):
         email = request.POST.get('email')
@@ -48,7 +48,7 @@ class LoginView(View):
         except User.DoesNotExist:
             error = "ユーザーが存在しません。"
             
-        return render(request, 'accounts/login.html', {'error': error})
+        return render(request, 'login.html', {'error': error})
 
 class LogoutView(View):
     def get(self, request):

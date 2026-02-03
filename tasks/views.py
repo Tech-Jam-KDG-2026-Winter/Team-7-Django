@@ -4,6 +4,7 @@ from .models import Task
 from django.utils import timezone
 from .models import Task, TaskDailyAchieved
 from accounts.models import User
+from questions.views import QuestionBatchView
 
 # Create your views here.
 class TaskDashboardView(View):
@@ -17,9 +18,14 @@ class TaskDashboardView(View):
         except User.DoesNotExist:
             return redirect('login')
 
-        tasks = Task.objects.filter(user=user)
+        # おすすめタスクを取得し、それに基づいてフィルタリング
+        recommended_task = QuestionBatchView.create_recommended_task(user)
+        if recommended_task:
+            tasks = Task.objects.filter(user=user, category=recommended_task.category)
+        else:
+            tasks = Task.objects.filter(user=user)
         
-        return render(request, 'tasks/index.html', {'tasks': tasks, 'user': user})
+        return render(request, 'index.html', {'tasks': tasks, 'user': user})
 
 class TaskUpdateView(View):
     def post(self, request, pk):
