@@ -1,0 +1,133 @@
+body {
+  font-family: sans-serif;
+}
+
+.page-title {
+  text-align: center;
+  margin-top: 44px;
+}
+
+.link-text {
+  text-align: center;
+  margin: 10px 0;
+  margin-top: 44px;
+}
+
+.signin-form {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 16px;
+  margin-top: 52px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  margin-top: 16px;
+}
+
+.form-group input {
+  width: 100%;
+  height: 36px;
+  padding: 6px;
+}
+
+.primary-button {
+  width: 100%;
+  height: 42px;
+  border-radius: 25px;
+  background-color: #2A275A;
+  color: #fff;
+  border: none;
+  margin-top: 39px;
+}
+
+.link-text2 {
+  text-align: center;
+  margin: 10px 0;
+  margin-top: 16px;
+}
+
+.divider {
+  text-align: center;
+ 
+  margin-top: 68px;
+  
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;                 
+  height: 1px;            
+  background-color: black;  
+}
+
+.divider span {
+  display: inline-block;
+  padding: 0 10px;       
+}
+
+.social-login {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  gap: 10px;
+}
+
+.social-login button {
+  width: 250px;
+  height: 42px;
+  border-radius: 25px;
+  border: none;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;          
+  align-items: center;
+  justify-content: center; 
+  gap: 8px;             
+}
+
+
+
+.google-login {
+  width: 250px;
+  height: 42px;
+  border: none;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 25px;
+  margin-top: 68px;
+}
+
+.facebook-login {
+  width: 250px;
+  height: 42px;
+  border: none;
+  font-size: 12px;
+  cursor: pointer;
+  margin-top: 8px;
+  border-radius: 25px;
+}
+
+.google-login ,
+.facebook-login {
+  
+  color: #1A1C1E ;
+}
+
+.google-login i,
+.facebook-login i {
+  margin-right: 8px;
+}
+
+.social-logo {
+  width: 20px;  
+  height: 20px;
+}
