@@ -33,7 +33,7 @@ body {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    overflow: hidden; /* コンテンツ全体はスクロールさせない */
+    overflow: hidden; 
 }
 
 /* タイトル */
@@ -77,14 +77,13 @@ body {
 /* --- スクロール可能なカレンダー領域 --- */
 .calendar-scroll-area {
     flex: 1;
-    overflow-x: auto; /* 横スクロールに変更 */
+    overflow-x: auto; 
     overflow-y: hidden;
-    display: flex; /* 横並びにする */
-    scroll-snap-type: x mandatory; /* スクロールを月ごとにスナップさせる */
-    /* スクロールバーを隠す（オプション） */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE/Edge */
-    cursor: grab; /* マウスカーソルを掴む形に */
+    display: flex; 
+    scroll-snap-type: x mandatory; 
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+    cursor: grab; 
 }
 .calendar-scroll-area::-webkit-scrollbar {
     display: none; /* Chrome/Safari */
@@ -97,13 +96,11 @@ body {
     padding-bottom: 20px;
 }
 
-/* ドラッグ中のカーソル */
 .calendar-scroll-area.active {
     cursor: grabbing;
-    scroll-snap-type: none; /* ドラッグ中はスナップを無効化 */
+    scroll-snap-type: none;
 }
 
-/* 月のラベル */
 .month-label {
     font-size: 18px;
     font-weight: 600;
@@ -115,14 +112,14 @@ body {
 .calendar-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr); /* 7列 */
-    gap: 12px; /* マスの間隔 */
+    gap: 12px;
     padding: 0 10px;
 }
 
 .grid-item {
-    aspect-ratio: 1 / 1; /* 正方形を維持 */
+    aspect-ratio: 1 / 1; 
     border-radius: 4px;
-    background-color: #e0e0e0; /* デフォルトのグレー */
+    background-color: #e0e0e0;
 }
 
 /* 色のクラス定義 */
@@ -141,12 +138,12 @@ body {
     top: 0;
     width: 100%; 
     height: 100%; 
-    background-color: rgba(0,0,0,0.5); /* 半透明の黒背景 */
+    background-color: rgba(0,0,0,0.5);
 }
 
 .modal-content {
     background-color: #fefefe;
-    margin: 60% auto; /* 上から位置調整 */
+    margin: 60% auto; 
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
