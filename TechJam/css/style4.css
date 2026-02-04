@@ -1,0 +1,49 @@
+/* home.html と calendar.html と user.html と navbar.htmlのcss */
+
+/* 下部ナビゲーションバー */
+.tab-bar {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 340px;
+    background: #000;
+    border-radius: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    z-index: 1000;
+}
+.tab-item {
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tab-item.active {
+    background: white;
+    color: black;
+    border-radius: 50%;
+}
+
+/* カレンダーの丸いポチ */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+.circle {
+    width: 40px;
+    height: 40px;
+    background: #888;
+    border-radius: 50%;
+}
+.circle.active { background: #7B61FF; } /* 紫色 */
+.circle.black { background: #000; }

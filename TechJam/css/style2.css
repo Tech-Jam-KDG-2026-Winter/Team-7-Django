@@ -1,0 +1,29 @@
+/* password_reset.html と check.html と complete.htmlのcss */
+
+/* 赤いボタン（送信ボタン用） */
+.btn-danger {
+    width: 100%;
+    background-color: #8B1A10; /* デザイン案の濃い赤 */
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 40px;
+}
+
+.description-text {
+    font-size: 10px;
+    color: #333;
+    text-align: center;
+    line-height: 1.6;
+    margin-top: 15px;
+}
+
+.info-text {
+    font-size: 8px;
+    color: #666;
+    text-align: center;
+    margin-top: 20px;
+}
