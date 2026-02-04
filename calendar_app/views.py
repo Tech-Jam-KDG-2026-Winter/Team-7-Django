@@ -2,14 +2,15 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.utils import timezone
 from tasks.models import TaskDailyAchieved
+
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 import calendar
 
 # Create your views here.
-class CalendarView(View):
+class CalendarView(LoginRequiredMixin, View):
     def get(self, request):
-        user_id = request.session.get('user_id')
-        if not user_id:
-            return redirect('login')
+        user = request.user
         
         today = timezone.now().date()
         try:
@@ -27,7 +28,7 @@ class CalendarView(View):
 
         # 期間内の達成タスクを取得
         achieved_tasks = TaskDailyAchieved.objects.filter(
-            user_id=user_id,
+            user=user,
             created_at__range=[start_date, end_date]
         ).select_related('task')
 

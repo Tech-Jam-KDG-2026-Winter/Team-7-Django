@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.hashers import make_password, check_password
+from django.contrib.auth import login, logout, authenticate
 from django.views import View
 from .models import User
 
@@ -17,12 +18,14 @@ class SignupView(View):
         if User.objects.filter(email=email).exists():
             return render(request, 'signup.html', {'error': 'このメールアドレスは既に使用されています。'})
 
-        user = User.objects.create(
+        user = User.objects.create_user(
             username=username,
-            password=make_password(password),
+            password=password,
             email=email,
         )
-        request.session['user_id'] = user.id
+        
+        user.backend = 'django.contrib.auth.backends.ModelBackend'
+        login(request, user)
         return redirect('questions_index')################# リダイアレクト先（仮） ##################
 
 class LoginView(View):
@@ -34,20 +37,22 @@ class LoginView(View):
         password = request.POST.get('password')
         
         try:
-            user = User.objects.get(email=email)
-
-            if check_password(password, user.password):
-                request.session['user_id'] = user.id
-                return redirect('task_list') ################# リダイアレクト先（仮） ##################
-
-            else:
-                error = "パスワードが一致しません。"
+            target_user = User.objects.get(email=email)
+            username = target_user.username
         except User.DoesNotExist:
-            error = "ユーザーが存在しません。"
-            
-        return render(request, 'login.html', {'error': error})
+            return render(request, 'signin.html', {'error': 'ユーザーが存在しません'})
+
+        user = authenticate(request, username=email, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('task_list') ################# リダイアレクト先（仮） ##################
+        else:
+                error = "パスワードが一致しません。"
+                    
+        return render(request, 'signin.html', {'error': error})
 
 class LogoutView(View):
     def get(self, request):
-        request.session.flush()
-        return redirect('login')
+        logout(request)
+        return redirect('accounts:login')

@@ -1,28 +1,22 @@
 from django.shortcuts import render, redirect
 from django.views import View
+
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 from .models import Question, UserAnswer
 from tasks.models import Category, Task
 from accounts.models import User
 
 # Create your views here.
-class QuestionBatchView(View):
+class QuestionBatchView(LoginRequiredMixin,View):
     def get(self, request): # 質問一覧表示
-        user_id = request.session.get('user_id')
-        if not user_id:
-          return redirect('login')
 
         questions = Question.objects.all()
         return render(request, 'questions.html', {'questions': questions})
 
     def post(self, request):
-        user_id = request.session.get('user_id')
-        if not user_id:
-            return redirect('login')
-    
-        try:
-            user = User.objects.get(id=user_id)
-        except User.DoesNotExist:
-            return redirect('login')
+        
+        user = request.user
 
         questions = Question.objects.all()
         
@@ -42,7 +36,7 @@ class QuestionBatchView(View):
 
         if total_questions == answered_count:
             self.create_recommended_task(user)
-            return redirect('index')
+            return redirect('task_list')
     
         return redirect('questions_index')
 

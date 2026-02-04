@@ -2,21 +2,17 @@ from django.shortcuts import render, redirect
 from django.views import View
 from .models import Task
 from django.utils import timezone
+
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 from .models import Task, TaskDailyAchieved
 from accounts.models import User
 from questions.views import QuestionBatchView
 
 # Create your views here.
-class TaskDashboardView(View):
+class TaskDashboardView(LoginRequiredMixin, View):
     def get(self, request):
-        user_id = request.session.get('user_id')
-        if not user_id:
-            return redirect('login')
-
-        try:
-            user = User.objects.get(id=user_id)
-        except User.DoesNotExist:
-            return redirect('login')
+        user = request.user
 
         recommended_task = QuestionBatchView.create_recommended_task(user)
         if recommended_task:
@@ -26,16 +22,13 @@ class TaskDashboardView(View):
         
         return render(request, 'task_list.html', {'tasks': tasks, 'user': user})
 
-class TaskUpdateView(View):
+class TaskUpdateView(LoginRequiredMixin, View):
     def post(self, request, pk):
-        user_id = request.session.get('user_id')
-        if not user_id:
-            return redirect('login')
-
+        user = request.user
+        
         try:
-            user = User.objects.get(id=user_id)
             task = Task.objects.get(id=pk, user=user)
-        except (User.DoesNotExist, Task.DoesNotExist):
+        except Task.DoesNotExist:
             return redirect('task_list')
         
         task.is_achieved = not task.is_achieved
