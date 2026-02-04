@@ -14,30 +14,36 @@ class QuestionBatchView(View):
         questions = Question.objects.all()
         return render(request, 'questions.html', {'questions': questions})
 
-    def post(self, request, pk): # 質問回答・保存
+    def post(self, request):
         user_id = request.session.get('user_id')
         if not user_id:
             return redirect('login')
-            
-        user = User.objects.get(id=user_id)
-        question = Question.objects.get(id=pk)
+    
+        try:
+            user = User.objects.get(id=user_id)
+        except User.DoesNotExist:
+            return redirect('login')
+
+        questions = Question.objects.all()
         
-        answer_str = request.POST.get('answer')
-        is_yes = (answer_str == 'yes')
-
-        UserAnswer.objects.update_or_create(
-            user=user,
-            question=question,
-            defaults={'answer': is_yes}
-        )
-
-        total_questions = Question.objects.count()
+        for question in questions:
+            answer_val = request.POST.get(f'answer_{question.id}')
+            
+            if answer_val is not None:
+                is_yes = (answer_val == 'yes')
+                UserAnswer.objects.update_or_create(
+                    user=user,
+                    question=question,
+                    defaults={'answer': is_yes}
+                )
+    
+        total_questions = questions.count()
         answered_count = UserAnswer.objects.filter(user=user).count()
 
         if total_questions == answered_count:
             self.create_recommended_task(user)
-            return redirect('index') # タスク一覧へ移動
-
+            return redirect('index')
+    
         return redirect('questions_index')
 
     @staticmethod

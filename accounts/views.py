@@ -26,7 +26,7 @@ class SignupView(View):
             email=email,
         )
         request.session['user_id'] = user.id
-        return redirect('index')################# リダイアレクト先（仮） ##################
+        return redirect('questions_index')################# リダイアレクト先（仮） ##################
 
 class LoginView(View):
     def get(self, request):
@@ -41,7 +41,7 @@ class LoginView(View):
 
             if check_password(password, user.password):
                 request.session['user_id'] = user.id
-                return redirect('index') ################# リダイアレクト先（仮） ##################
+                return redirect('questions_index') ################# リダイアレクト先（仮） ##################
 
             else:
                 error = "パスワードが一致しません。"

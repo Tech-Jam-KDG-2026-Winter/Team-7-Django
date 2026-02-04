@@ -18,7 +18,6 @@ class TaskDashboardView(View):
         except User.DoesNotExist:
             return redirect('login')
 
-        # おすすめタスクを取得し、それに基づいてフィルタリング
         recommended_task = QuestionBatchView.create_recommended_task(user)
         if recommended_task:
             tasks = Task.objects.filter(user=user, category=recommended_task.category)
@@ -38,12 +37,15 @@ class TaskUpdateView(View):
             task = Task.objects.get(id=pk, user=user)
         except (User.DoesNotExist, Task.DoesNotExist):
             return redirect('index')
-
-        task.is_achieved = True
+        
+        task.is_achieved = not task.is_achieved
         task.save()
 
         today = timezone.now().date()
-        if not TaskDailyAchieved.objects.filter(user=user, task=task, created_at=today).exists():
-            TaskDailyAchieved.objects.create(user=user, task=task)
+        
+        if task.is_achieved:
+            TaskDailyAchieved.objects.get_or_create(user=user, task=task, created_at=today)
+        else:
+            TaskDailyAchieved.objects.filter(user=user, task=task, created_at=today).delete()
             
         return redirect('index')
