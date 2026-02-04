@@ -3,7 +3,7 @@ const now = new Date();
 document.getElementById('display-month').textContent = now.toLocaleString('en-US', { month: 'short' });
 document.getElementById('display-weekday').textContent = now.toLocaleString('en-US', { weekday: 'short' });
 
-// モーダル
+// --- モーダル表示機能 ---
 const modal = document.getElementById('calorie-modal');
 const modalDate = document.getElementById('modal-date');
 const modalCalories = document.getElementById('modal-calories');
@@ -14,6 +14,7 @@ document.addEventListener('click', function(event) {
         const day = event.target.getAttribute('data-day');
         const calories = event.target.getAttribute('data-calories');
 
+        // 日付情報がある場合のみモーダルを表示
         if (day) {
             modalDate.textContent = `${day}日`;
             modalCalories.textContent = `消費カロリー: ${calories} kcal`;
@@ -22,22 +23,23 @@ document.addEventListener('click', function(event) {
     }
 });
 
+// 閉じるボタンまたは背景クリックでモーダルを閉じる
 window.addEventListener('click', function(event) {
     if (event.target === modal || (closeButton && event.target === closeButton)) {
         modal.style.display = 'none';
     }
 });
 
-// カレンダースクロール
+// --- 無限スクロールカレンダー機能 ---
 const scrollArea = document.getElementById('calendar-scroll-area');
-let prevMonthDate = new Date(now.getFullYear(), now.getMonth(), 1); 
-let nextMonthDate = new Date(now.getFullYear(), now.getMonth(), 1); 
+let prevMonthDate = new Date(now.getFullYear(), now.getMonth(), 1); // 先月の基準日
+let nextMonthDate = new Date(now.getFullYear(), now.getMonth(), 1); // 来月の基準日
 let isLoading = false;
 let isDown = false;
 let startX;
 let scrollLeft;
 
-// カレンダーグリッド生成
+// カレンダーグリッドを生成する関数
 function createMonthHTML(year, month) {
     const firstDay = new Date(year, month, 1);
     const lastDay = new Date(year, month + 1, 0);
@@ -48,10 +50,12 @@ function createMonthHTML(year, month) {
     html += `<div class="month-label">${year} / ${month + 1}</div>`;
     html += '<div class="calendar-grid">';
 
+    // 月初めの空白セル（曜日合わせ）
     for (let i = 0; i < startDayOfWeek; i++) {
         html += '<div class="grid-item color-gray" style="opacity: 0.3;"></div>';
     }
 
+    // 日付セル
     for (let d = 1; d <= daysInMonth; d++) {
         html += `<div class="grid-item color-gray" data-day="${d}" data-calories="0"></div>`;
     }
@@ -61,7 +65,7 @@ function createMonthHTML(year, month) {
     return html;
 }
 
-// 先月をロード
+// 先月を追加ロード
 function loadPrevMonth() {
     scrollArea.style.scrollSnapType = 'none';
 
@@ -76,7 +80,7 @@ function loadPrevMonth() {
 
     scrollArea.insertAdjacentHTML('afterbegin', html);
 
-    // 要素追加分だけスクロール位置を戻す
+    // 要素追加分だけスクロール位置を戻す（見た目の位置を維持し、連続ロードを防ぐ）
     const newScrollWidth = scrollArea.scrollWidth;
     scrollArea.scrollLeft = oldScrollLeft + (newScrollWidth - oldScrollWidth);
 
@@ -85,7 +89,7 @@ function loadPrevMonth() {
     }, 50);
 }
 
-// 来月をロード
+// 来月を追加ロード
 function loadNextMonth() {
     nextMonthDate.setMonth(nextMonthDate.getMonth() + 1);
     
@@ -96,19 +100,22 @@ function loadNextMonth() {
     scrollArea.insertAdjacentHTML('beforeend', html);
 }
 
+// スクロール位置をチェックしてロードする関数
 function checkScrollAndLoad() {
-    if (isLoading || isDown) return;
+    if (isLoading || isDown) return; // ロード中またはドラッグ中は処理しない
 
     const scrollLeft = scrollArea.scrollLeft;
     const scrollWidth = scrollArea.scrollWidth;
     const clientWidth = scrollArea.clientWidth;
 
+    // 左端に近づいたら先月をロード (閾値: 50px)
     if (scrollLeft < 50) {
         isLoading = true;
         loadPrevMonth();
-        setTimeout(() => { isLoading = false; }, 500); 
+        setTimeout(() => { isLoading = false; }, 500); // 待機時間を少し延長
     }
 
+    // 右端に近づいたら来月をロード (閾値: 50px)
     if (scrollLeft + clientWidth > scrollWidth - 50) {
         isLoading = true;
         loadNextMonth();
@@ -116,8 +123,10 @@ function checkScrollAndLoad() {
     }
 }
 
+// スクロールイベントの監視
 scrollArea.addEventListener('scroll', checkScrollAndLoad);
 
+// --- ドラッグスクロール機能 ---
 scrollArea.addEventListener('mousedown', (e) => {
     isDown = true;
     scrollArea.classList.add('active');

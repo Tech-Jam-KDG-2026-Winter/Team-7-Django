@@ -1,0 +1,20 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+
+<nav class="bottom-nav">
+    <a href="{% url 'index' %}" class="nav-item {% if request.resolver_match.url_name == 'index' %}active{% endif %}">
+        <img src="{% static 'media/home.png' %}" alt="Home">
+    </a>
+    <a href="{% url 'calendar' %}" class="nav-item {% if request.resolver_match.url_name == 'calendar' %}active{% endif %}">
+        <img src="{% static 'media/Vector.png' %}" alt="Vector">
+    </a>
+    <div class="nav-item">
+        <img src="{% static 'media/+button.png' %}" alt="Add">
+    </div>
+    <div class="nav-item">
+        <img src="{% static 'media/clock.png' %}" alt="Clock">
+    </div>
+    <div class="nav-item">
+        <img src="{% static 'media/User.png' %}" alt="User">
+    </div>
+</nav>
