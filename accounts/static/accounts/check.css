@@ -1,0 +1,83 @@
+.page {
+  text-align: center;
+}
+
+.page-title {
+  margin-top: 122px;
+  font-family: SF Pro;
+  font-size: 17px;
+}
+
+.message-text {
+  margin-top: 28px;
+  font-family: SF pro;
+  font-size: 9px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+.form-group label {
+  display: block;
+  margin-top: 76px;
+  margin-bottom: 8px;
+  margin-right: 142px;
+}
+.form-group input {
+  width: 250px;
+  height: 42px;
+}
+
+
+
+
+.btn-primary {
+  width: 250px;
+  height: 42px;
+  border-radius: 25px;
+  background-color: #980000;
+  color: #fff;
+  border: none;
+}
+
+.divider {
+  margin: 24px 0;
+}
+
+
+.form-group input {
+  width: 250px;
+  height: 42px;
+}
+
+
+
+.divider {
+  margin: 24px 0;
+}
+
+
+
+
+.form-group {
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-family: inter;
+}
+
+.primary-button {
+  width: 250px;
+  height: 42px;
+  border-radius: 25px;
+  background-color: #980000;
+  color: #fff;
+  border: none;
+  margin-top: 79px;
+  font-family: SF pro;
+  font-size: 17px;
+}

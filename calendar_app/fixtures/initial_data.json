@@ -1,0 +1,32 @@
+[
+  {
+    "model": "calendar_app.record",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "plus_calorie": 2100.0,
+      "minus_calorie": 1850.0,
+      "created_at": "2026-01-31"
+    }
+  },
+  {
+    "model": "calendar_app.record",
+    "pk": 2,
+    "fields": {
+      "user": 1,
+      "plus_calorie": 1950.0,
+      "minus_calorie": 2200.0,
+      "created_at": "2026-02-01"
+    }
+  },
+  {
+    "model": "calendar_app.record",
+    "pk": 3,
+    "fields": {
+      "user": 1,
+      "plus_calorie": 2300.0,
+      "minus_calorie": 2000.0,
+      "created_at": "2026-02-02"
+    }
+  }
+]

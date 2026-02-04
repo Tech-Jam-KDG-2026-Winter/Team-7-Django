@@ -1,0 +1,50 @@
+[
+  {
+    "model": "accounts.user",
+    "pk": 1,
+    "fields": {
+      "username": "tanaka@example.com",
+      "email": "tanaka@example.com",
+      "password": "pbkdf2_sha256$600000$placeholder$placeholder==",
+      "height": 175.5,
+      "weight": 70.0,
+      "gender": "male",
+      "birth_date": "1995-04-15",
+      "is_staff": false,
+      "is_active": true,
+      "is_superuser": false
+    }
+  },
+  {
+    "model": "accounts.user",
+    "pk": 2,
+    "fields": {
+      "username": "sato@example.com",
+      "email": "sato@example.com",
+      "password": "pbkdf2_sha256$600000$placeholder$placeholder==",
+      "height": 162.0,
+      "weight": 55.5,
+      "gender": "female",
+      "birth_date": "1998-08-22",
+      "is_staff": false,
+      "is_active": true,
+      "is_superuser": false
+    }
+  },
+  {
+    "model": "accounts.user",
+    "pk": 3,
+    "fields": {
+      "username": "suzuki@example.com",
+      "email": "suzuki@example.com",
+      "password": "pbkdf2_sha256$600000$placeholder$placeholder==",
+      "height": 168.0,
+      "weight": 65.0,
+      "gender": "other",
+      "birth_date": "2000-12-05",
+      "is_staff": false,
+      "is_active": true,
+      "is_superuser": false
+    }
+  }
+]
