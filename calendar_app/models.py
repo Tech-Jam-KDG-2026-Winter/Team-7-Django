@@ -20,14 +20,11 @@ class Record(models.Model):
         verbose_name_plural = 'Records'
         ordering = ['-created_at']
         
-        # 1日1レコードしか作らせない
         unique_together = [['user', 'created_at']]
 
     def __str__(self):
         return f"{self.user.username} - {self.created_at}"
 
-    # <p>正味カロリー: {{ record.net_calorie }}</p>
-    # こんな感じで呼び出せる！
     @property
     def net_calorie(self):
         return self.plus_calorie - self.minus_calorie

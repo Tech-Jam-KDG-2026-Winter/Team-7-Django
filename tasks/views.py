@@ -18,7 +18,7 @@ class TaskDashboardView(View):
         except User.DoesNotExist:
             return redirect('login')
 
-        # おすすめタスクを取得し、それに基づいてフィルタリング
+        # おすすめタスクを取得して、フィルタリング（Quetionsのviewのやつ）
         recommended_task = QuestionBatchView.create_recommended_task(user)
         if recommended_task:
             tasks = Task.objects.filter(user=user, category=recommended_task.category)

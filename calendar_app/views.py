@@ -19,13 +19,11 @@ class CalendarView(View):
             year = today.year
             month = today.month
 
-        # カレンダーオブジェクト作成（日曜始まり）
         cal = calendar.Calendar(firstweekday=6)
         month_days = cal.monthdatescalendar(year, month)
 
-        # その月の達成データを取得するための範囲設定
-        start_date = month_days[0][0] # カレンダー表示上の最初の日付
-        end_date = month_days[-1][-1] # カレンダー表示上の最後の日付
+        start_date = month_days[0][0] 
+        end_date = month_days[-1][-1] 
 
         # 期間内の達成タスクを取得
         achieved_tasks = TaskDailyAchieved.objects.filter(
@@ -56,7 +54,6 @@ class CalendarView(View):
                 })
             calendar_data.append(week_data)
 
-        # 前月・次月のリンク用計算
         prev_year, prev_month = (year, month - 1) if month > 1 else (year - 1, 12)
         next_year, next_month = (year, month + 1) if month < 12 else (year + 1, 1)
 
