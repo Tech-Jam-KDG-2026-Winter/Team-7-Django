@@ -24,7 +24,7 @@ class TaskDashboardView(View):
         else:
             tasks = Task.objects.filter(user=user)
         
-        return render(request, 'index.html', {'tasks': tasks, 'user': user})
+        return render(request, 'task_list.html', {'tasks': tasks, 'user': user})
 
 class TaskUpdateView(View):
     def post(self, request, pk):
@@ -36,7 +36,7 @@ class TaskUpdateView(View):
             user = User.objects.get(id=user_id)
             task = Task.objects.get(id=pk, user=user)
         except (User.DoesNotExist, Task.DoesNotExist):
-            return redirect('index')
+            return redirect('task_list')
         
         task.is_achieved = not task.is_achieved
         task.save()
@@ -48,4 +48,4 @@ class TaskUpdateView(View):
         else:
             TaskDailyAchieved.objects.filter(user=user, task=task, created_at=today).delete()
             
-        return redirect('index')
+        return redirect('task_list')

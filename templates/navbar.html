@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
 
 <nav class="bottom-nav">
-    <a href="{% url 'index' %}" class="nav-item {% if request.resolver_match.url_name == 'index' %}active{% endif %}">
+    <a href="{% url 'task_list' %}" class="nav-item {% if request.resolver_match.url_name == 'task_list' %}active{% endif %}">
         <img src="{% static 'media/home.png' %}" alt="Home">
     </a>
     <a href="{% url 'calendar' %}" class="nav-item {% if request.resolver_match.url_name == 'calendar' %}active{% endif %}">

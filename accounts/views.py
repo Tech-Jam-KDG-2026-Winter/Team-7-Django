@@ -38,7 +38,7 @@ class LoginView(View):
 
             if check_password(password, user.password):
                 request.session['user_id'] = user.id
-                return redirect('questions_index') ################# リダイアレクト先（仮） ##################
+                return redirect('task_list') ################# リダイアレクト先（仮） ##################
 
             else:
                 error = "パスワードが一致しません。"
