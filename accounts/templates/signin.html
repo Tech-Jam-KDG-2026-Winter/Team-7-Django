@@ -3,26 +3,30 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>新規登録</title>
-  <link rel="stylesheet" href="{% static 'accounts/signup.css' %}">
+  <title>signin</title>
+  <link rel="stylesheet" href="{% static 'accounts/signin.css' %}">
+
 </head>
 <body>
-  <h1 class="page-title">新規登録</h1>
+  <h1 class="page-title">ログイン</h1>
 
-  <form method="post" class="signup-form">
+  <p class="link-text">Don’t have an account? <a href="{% url 'signup' %}">Sign Up</a></p>
+
+  <form method="post" class="signin-form">
     {% csrf_token %}
 
     <div class="form-group">
       <label for="email">メールアドレス</label>
       <input type="email" id="email" name="email">
-    </div>
-    <div class="form-group">
-      <label2 for="password">パスワード</label2>
+    
+      <label for="password">パスワード</label>
       <input type="password" id="password" name="password">
     </div>
 
-    <button type="submit" class="primary-button">新規登録</button>
+    <button type="submit" class="primary-button">ログイン</button>
   </form>
+
+  <p class="link-text2">Forgot Your Password?</p>
 
   <div class="divider">
     <span>または</span>
@@ -38,5 +42,7 @@
       Facebookでログイン
     </button>
   </div>
+  
 </body>
 </html>
+

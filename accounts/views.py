@@ -30,7 +30,7 @@ class SignupView(View):
 
 class LoginView(View):
     def get(self, request):
-        return render(request, 'login.html')
+        return render(request, 'signin.html')
 
     def post(self, request):
         email = request.POST.get('email')
