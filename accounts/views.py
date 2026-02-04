@@ -1,6 +1,3 @@
-#########リダイアレクト先の設定##########
-
-
 from django.shortcuts import render, redirect
 from django.contrib.auth.hashers import make_password, check_password
 from django.views import View
