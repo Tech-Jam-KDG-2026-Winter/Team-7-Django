@@ -58,12 +58,15 @@ class QuestionBatchView(LoginRequiredMixin,View):
                 best_category = category
         
         if best_category:
-            task, created = Task.objects.get_or_create(
-                user=user,
-                category=best_category,
-                phase='Medium',
-                content=f'{best_category.title} に基づくおすすめタスク',
-                defaults={'calorie': 0.0}
-            )
+            master_tasks = Task.objects.filter(category=best_category)
+            
+            for master in master_tasks:
+                task, created = Task.objects.get_or_create(
+                    user=user,
+                    category=best_category,
+                    phase=master.phase,
+                    content=master.content,
+                    calorie=master.calorie
+                )
             return task
         return None
