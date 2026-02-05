@@ -40,11 +40,11 @@ python3 manage.py migrate
 python3 manage.py loaddata initial_data.json
 
 # デモデータのユーザーのパスワードを設定 (set user's password of test data)
-python3 set_test_passwords
+python3 manage.py set_test_passwords
 
 ```
 
-## execute
+## Execute
 ```bash
 python3 manage.py runserver
 ```

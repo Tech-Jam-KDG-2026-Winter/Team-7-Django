@@ -1,3 +1,6 @@
+/* 各タスク自体をクリックできるように変更 */
+
+
 .container {
     background-color: #f6f6f6;
     font-family: -apple-system, "Helvetica Neue", sans-serif;
@@ -34,18 +37,40 @@
     max-width: 600px;
 }
 
+.task-item {
+    margin-bottom: 16px;
+    width: 100%;
+}
+
+.task-form {
+    width: 100%;
+    display: block;
+}
+
 .task-card {
     background: #ffffff;
     border-radius: 20px;
     padding: 24px;
-    margin-bottom: 16px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     box-sizing: border-box;
-    transition: all 0.2s ease;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.task-card:active {
+    transform: scale(0.97);
+    background-color: #f0f0f0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
 }
 
 .task-card.is-completed {
@@ -93,77 +118,32 @@
     color: #8e8e93;
 }
 
-.task-action {
+.task-status-icon {
     flex-shrink: 0;
-}
-
-.btn-complete {
-    background-color: #333;
-    color: #fff;
-    border: none;
-    padding: 10px 16px;
-    border-radius: 12px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    width: 110px;
-    transition: opacity 0.2s;
-}
-
-.btn-complete:active {
-    opacity: 0.7;
-}
-
-.btn-undo {
-    background-color: transparent;
-    border: 1.5px solid #34c759;
-    color: #34c759;
-    padding: 8px 16px;
-    border-radius: 12px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    width: 110px;
+    width: 32px;
+    height: 32px;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    transition: background-color 0.2s;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #f2f2f7;
+    transition: all 0.2s;
 }
 
-.btn-undo:active {
-    background-color: rgba(52, 199, 89, 0.1);
+.is-completed .task-status-icon {
+    background-color: #34c759;
 }
 
-.undo-text {
-    font-size: 9px;
-    font-weight: normal;
-    opacity: 0.7;
-    margin-top: 2px;
-}
-
-.bottom-nav {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    max-width: 600px;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    display: flex;
-    justify-content: space-around;
-    padding: 15px 0 30px;
-    border-top: 1px solid #eee;
-    z-index: 100;
-}
-
-.nav-item {
-    text-decoration: none;
-    color: #8e8e93;
-    font-size: 12px;
-}
-
-.nav-item.active {
-    color: #000;
+.check-mark {
+    color: #fff;
+    font-size: 18px;
     font-weight: bold;
+}
+
+.plus-mark {
+    color: #8e8e93;
+    font-size: 20px;
+    font-weight: light;
 }
 
 .empty-state {
@@ -178,4 +158,18 @@
     color: #007aff;
     text-decoration: none;
     font-weight: bold;
+}
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0 30px;
+    border-top: 1px solid #eee;
+    z-index: 100;
 }
