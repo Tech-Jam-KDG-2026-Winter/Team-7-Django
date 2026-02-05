@@ -7,8 +7,12 @@
   <link rel="stylesheet" href="{% static 'accounts/signup.css' %}">
 </head>
 <body>
-  <h1 class="page-title">新規登録</h1>
 
+  <header class="header-container">
+    <a href="{% url 'accounts:login' %}" class="back-button">←</a>
+    <h1 class="page-title">新規登録</h1>
+  </header>
+  
   <form method="post" class="signup-form">
     {% csrf_token %}
 

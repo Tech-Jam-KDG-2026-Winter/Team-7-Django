@@ -18,27 +18,19 @@
     <main class="main-content">
         <ul class="task-list">
             {% for task in tasks %}
-                <li class="task-card {% if task.is_achieved %}is-completed{% endif %}">
-                    <div class="task-info">
-                        <span class="category-tag">{{ task.category.title }}</span>
-                        <span class="phase-badge {{ task.phase|lower }}">{{ task.phase }}</span>
-                        <p class="task-content">{{ task.content }}</p>
-                        <span class="task-calorie">{{ task.calorie }} kcal</span>
-                    </div>
-
-                    <div class="task-action">
-                        <form action="{% url 'update_task' task.id %}" method="post">
-                            {% csrf_token %}
-                            {% if not task.is_achieved %}
-                                <button type="submit" class="btn-complete">達成！</button>
-                            {% else %}
-                                <button type="submit" class="btn-undo">
-                                    <span class="done-mark">✔ 達成済み</span>
-                                </button>
-                            {% endif %}
-                        </form>
-                    </div>
-                </li>
+            <li class="task-item">
+                <form action="{% url 'update_task' task.id %}" method="post" class="task-form">
+                    {% csrf_token %}
+                    <button type="submit" class="task-card {% if task.is_achieved %}is-completed{% endif %}">
+                        <div class="task-info">
+                            <span class="category-tag">{{ task.category.title }}</span>
+                            <span class="phase-badge {{ task.phase|lower }}">{{ task.phase }}</span>
+                            <p class="task-content">{{ task.content }}</p>
+                            <span class="task-calorie">{{ task.calorie }} kcal</span>
+                        </div>
+                    </button>
+                </form>
+            </li>
             {% empty %}
                 <div class="empty-state">
                     <p>表示できるタスクがありません。</p>
