@@ -1,0 +1,118 @@
+.container {
+    background-color: #f6f6f6;
+    font-family: -apple-system, "Helvetica Neue", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    min-height: 100vh;
+}
+
+.header {
+    width: 100%;
+    max-width: 350px;
+    margin-bottom: 20px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #8e8e93;
+    font-size: 13px;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+    margin-top: 10px;
+}
+
+.form-wrapper {
+    width: 100%;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+}
+
+.question-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.question-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 24px 16px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.question-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 16px;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.answer-control {
+    display: flex;
+    background-color: #efeff0;
+    border-radius: 10px;
+    padding: 2px;
+    width: 100%;
+}
+
+.radio-input {
+    display: none;
+}
+
+.btn-answer {
+    flex: 1;
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #8e8e93;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.radio-input:checked + .btn-answer {
+    background-color: #ffffff;
+    color: #000;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.submit-footer {
+    padding: 20px 0 40px;
+}
+
+.btn-submit {
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 16px;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.btn-submit:active {
+    opacity: 0.8;
+}
+
+.empty-state {
+    text-align: center;
+    color: #999;
+    padding: 20px;
+}

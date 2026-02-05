@@ -1,0 +1,46 @@
+.bottom-nav {
+    position: fixed;
+    bottom: 59px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: fit-content;
+    height: 50px;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 0 20px;
+    z-index: 1000;
+    border-radius: 30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
+}
+
+.nav-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.nav-item img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    /* 未選択時は画像を白くする */
+    filter: brightness(0) invert(1);
+}
+
+/* 選択中（active）のスタイル */
+.nav-item.active {
+    background-color: white;
+}
+
+.nav-item.active img {
+    /* 選択時は画像を黒くする */
+    filter: brightness(0);
+}

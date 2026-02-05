@@ -1,0 +1,102 @@
+[
+  {
+    "model": "questions.question",
+    "pk": 1,
+    "fields": {
+      "category": 1,
+      "content": "腕立て伏せを20回以上できますか？",
+      "priority": "HIGH",
+      "is_yes": false
+    }
+  },
+  {
+    "model": "questions.question",
+    "pk": 2,
+    "fields": {
+      "category": 1,
+      "content": "スクワットを30回以上できますか？",
+      "priority": "HIGH",
+      "is_yes": false
+    }
+  },
+  {
+    "model": "questions.question",
+    "pk": 3,
+    "fields": {
+      "category": 1,
+      "content": "懸垂を5回以上できますか？",
+      "priority": "LOW",
+      "is_yes": false
+    }
+  },
+  {
+    "model": "questions.question",
+    "pk": 4,
+    "fields": {
+      "category": 2,
+      "content": "5km走れますか？",
+      "priority": "HIGH",
+      "is_yes": false
+    }
+  },
+  {
+    "model": "questions.question",
+    "pk": 5,
+    "fields": {
+      "category": 2,
+      "content": "階段を3階まで息切れせずに上がれますか？",
+      "priority": "HIGH",
+      "is_yes": false
+    }
+  },
+  {
+    "model": "questions.question",
+    "pk": 6,
+    "fields": {
+      "category": 2,
+      "content": "30分間ジョギングを続けられますか？",
+      "priority": "LOW",
+      "is_yes": false
+    }
+  },
+  {
+    "model": "questions.question",
+    "pk": 7,
+    "fields": {
+      "category": 3,
+      "content": "毎日7時間以上睡眠をとっていますか？",
+      "priority": "HIGH",
+      "is_yes": false
+    }
+  },
+  {
+    "model": "questions.question",
+    "pk": 8,
+    "fields": {
+      "category": 3,
+      "content": "1日3食バランスよく食べていますか？",
+      "priority": "HIGH",
+      "is_yes": false
+    }
+  },
+  {
+    "model": "questions.question",
+    "pk": 9,
+    "fields": {
+      "category": 3,
+      "content": "定期的に健康診断を受けていますか？",
+      "priority": "LOW",
+      "is_yes": false
+    }
+  },
+  {
+    "model": "questions.question",
+    "pk": 10,
+    "fields": {
+      "category": 3,
+      "content": "ストレス解消法を持っていますか？",
+      "priority": "LOW",
+      "is_yes": false
+    }
+  }
+]

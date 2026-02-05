@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+{% load static %}
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <title>Calendar</title>
+  <link rel="stylesheet" href="{% static 'css/calendar.css' %}">
+</head>
+
+<body>
+
+  <div class="phone-container">
+
+    <div class="content">
+      <h2 class="page-title">その日の消費カロリー表示</h2>
+
+      <div class="date-display">
+        <span class="date-number">{% now "j" %}</span>
+        <div class="date-text">
+          <span id="display-month"></span>
+          <span id="display-weekday"></span>
+        </div>
+      </div>
+
+      <div class="calendar-scroll-area" id="calendar-scroll-area">
+        <div class="month-container" id="current-month-container">
+          <div class="month-label">{% now "Y" %} / {% now "n" %}</div>
+          <div class="calendar-grid">
+            {% for week in calendar_data %}
+              {% for day in week %}
+                <div class="grid-item 
+                  {% if not day.is_current_month %}
+                    color-gray
+                  {% elif day.calories > 300 %}
+                    color-purple
+                  {% elif day.calories > 200 %}
+                    color-red
+                  {% elif day.calories > 100 %}
+                    color-orange
+                  {% elif day.calories > 0 %}
+                    color-blue
+                  {% else %}
+                    color-gray
+                  {% endif %}
+                " data-day="{{ day.day }}" data-calories="{{ day.calories }}"></div>
+              {% endfor %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- モーダルウィンドウ -->
+    <div id="calorie-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h3 id="modal-date"></h3>
+        <p id="modal-calories" style="margin-top: 10px;"></p>
+      </div>
+
+      
+    </div>
+    {% include 'navbar.html' %}
+  </div>
+
+  <script src="{% static 'js/calendar.js' %}"></script>
+</body>
+
+</html>

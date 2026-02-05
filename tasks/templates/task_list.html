@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>タスクダッシュボード</title>
+    <link rel="stylesheet" href="{% static 'tasks/task_list.css' %}">
+</head>
+<body class="container">
+    <header class="header">
+        <div class="user-info">
+            <span class="user-name">{{ user.username }}さん</span>
+        </div>
+        <h1 class="title">今日のタスク</h1>
+    </header>
+
+    <main class="main-content">
+        <ul class="task-list">
+            {% for task in tasks %}
+            <li class="task-item">
+                <form action="{% url 'update_task' task.id %}" method="post" class="task-form">
+                    {% csrf_token %}
+                    <button type="submit" class="task-card {% if task.is_achieved %}is-completed{% endif %}">
+                        <div class="task-info">
+                            <span class="category-tag">{{ task.category.title }}</span>
+                            <span class="phase-badge {{ task.phase|lower }}">{{ task.phase }}</span>
+                            <p class="task-content">{{ task.content }}</p>
+                            <span class="task-calorie">{{ task.calorie }} kcal</span>
+                        </div>
+                    </button>
+                </form>
+            </li>
+            {% empty %}
+                <div class="empty-state">
+                    <p>表示できるタスクがありません。</p>
+                    <a href="{% url 'questions_index' %}" class="btn-link">診断を受けてタスクを作成</a>
+                </div>
+            {% endfor %}
+        </ul>
+    </main>
+</body>
+    {% include 'navbar.html' %}
+</html>
